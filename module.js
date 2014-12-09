@@ -3,11 +3,10 @@
 
 	/**
 	 * @ngdoc module
-	 * @module battlesnake.parsers
-	 * @requires battlesnake.formatters
+	 * @module battlesnake.transformations
 	 * @requires {@link http://underscorejs.org|Underscore}
 	 *
 	 */
-	angular.module('battlesnake.parsers', ['battlesnake.formatters']);
+	angular.module('battlesnake.transformations', []);
 
 })(window.angular);

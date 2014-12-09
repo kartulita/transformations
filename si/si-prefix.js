@@ -1,7 +1,7 @@
 (function (angular) {
 	'use strict';
 
-	angular.module('battlesnake.formatters')
+	angular.module('battlesnake.transformations')
 		.factory('siPrefixFormatter', siPrefixFormatter);
 
 	function siPrefixFormatter(digitsFormatter) {

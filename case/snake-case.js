@@ -1,10 +1,12 @@
 (function (angular) {
 	'use strict';
 
-	angular.module('battlesnake.formatters')
-		.factory('snakeCaseFormatter', snakeCaseFormatter);
+	angular.module('battlesnake.transformations')
+		.factory('snakeCaseParser', snakeCase)
+		.factory('snakeCaseFormatter', snakeCase)
+		;
 
-	function snakeCaseFormatter() {
+	function snakeCase() {
 		return function (str, separator) {
 			separator = separator || '-';
 			return str.trim().replace(/[^A-Z][A-Z]/g, function (c) {

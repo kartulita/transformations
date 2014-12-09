@@ -8,7 +8,7 @@
 	 * Expect browser behaviour to be worse than node in some cases.
 	 */
 
-	angular.module('battlesnake.formatters')
+	angular.module('battlesnake.transformations')
 		.factory('digitsFormatter', digitsFormatter);
 
 	function digitsFormatter() {

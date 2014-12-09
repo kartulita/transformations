@@ -1,7 +1,7 @@
 (function (angular, _) {
 	'use strict';
 
-	angular.module('battlesnake.formatters')
+	angular.module('battlesnake.transformations')
 		.directive('formatter', formattersDirective)
 		.directive('formatters', formattersDirective);
 

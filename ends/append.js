@@ -1,7 +1,7 @@
 (function (angular) {
 	'use strict';
 
-	angular.module('battlesnake.formatters')
+	angular.module('battlesnake.transformations')
 		.factory('appendFormatter', appendFormatter);
 
 	function appendFormatter() {
