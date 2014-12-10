@@ -14,9 +14,9 @@
 	 * @returns {parser}
 	 * Parser function, e.g. `(viewValue, param) -> rawValue`
 	 */
-	function parserService($injector) {
+	function parserService($injector, camelCaseFormatter) {
 		return function (name) {
-			var func = $injector.get(name + 'Parser');
+			var func = $injector.get(camelCaseFormatter(name) + 'Parser');
 			if (!func) {
 				throw new Error('Unknown parser: ' + name);
 			}

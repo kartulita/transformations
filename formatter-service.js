@@ -14,9 +14,9 @@
 	 * @returns {formatter}
 	 * Formatter function, e.g. `(rawValue, param) -> formattedValue`
 	 */
-	function formatterService($injector) {
+	function formatterService($injector, camelCaseFormatter) {
 		return function (name) {
-			var func = $injector.get(name + 'Formatter');
+			var func = $injector.get(camelCaseFormatter(name) + 'Formatter');
 			if (!func) {
 				throw new Error('Unknown formatter: ' + name);
 			}
