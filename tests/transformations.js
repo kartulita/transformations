@@ -85,4 +85,29 @@ tests.push({
 			{ expr: 'den', param: 'mark', expect: 'denmark' }
 		]);
 
+	testFormatter('digits',
+		[
+			{ expr: '012.3450', param: 0, expect: '10' },
+			{ expr: '012.3450', param: 1, expect: '10' },
+			{ expr: '012.3450', param: 2, expect: '12' },
+			{ expr: '-012.3450', param: 3, expect: '-12.3' },
+			{ expr: '012.3450', param: 4, expect: '12.35' },
+			{ expr: '-012.3450', param: 4, expect: '-12.35' },
+			{ expr: '012.3450', param: 5, expect: '12.345' },
+			{ expr: '012.3450', param: 6, expect: '12.3450' },
+			{ expr: '012.3450', param: '~6', expect: '12.345' },
+			{ expr: '10', param: -4, expect: '10' },
+			{ expr: '10', param: 4, expect: '10.00' }
+		]);
+
+	testFormatter('si-prefix',
+		[
+			{ expr: 100, expect: '100' },
+			{ expr: 1e3, expect: '1k' },
+			{ expr: 1e-9, expect: '1n' },
+			{ expr: 0.832, param: 'd', expect: '8.32d' },
+			{ expr: 920, param: 'k', expect: '0.92k' },
+			{ expr: 299792458, param: 'k', expect: '300000k' }
+		]);
+
 }});

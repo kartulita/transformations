@@ -12,18 +12,9 @@
 		var unit = prefixes.indexOf('');
 		return function (str, prefix) {
 			var value = parseFloat(str);
-			var scale = prefix === undefined ? -1 : prefixes.indexOf(prefix);
-			if (scale === -1) {
-				scale = Math.floor(Math.log(value) / Math.LN10 / 3) + unit;
-				if (scale < 0) {
-					scale = 0;
-				} else if (scale >= prefixes.length) {
-					scale = prefixes.length - 1;
-				}
-			}
-			var prefixIndex = scale;
-			scale = scale * 3;
-			var digits = 3;
+			var prefixIndex = prefix === undefined ? -1 : prefixes.indexOf(prefix);
+			var scaled = value;
+			var scale;
 			/* Non-1000-based prefixes */
 			if (prefix === 'c') {
 				scale = -2;
@@ -33,9 +24,21 @@
 				scale = 1;
 			} else if (prefix === 'h') {
 				scale = 2;
+			} else if (prefixIndex === -1) {
+				/* No prefix specified/recognised */
+				prefixIndex = unit + Math.floor(Math.log(value) / (Math.LN10 * 3));
+				/* Correct rounding error */
+				if (value / Math.pow(1000, prefixIndex - unit) >= 1000) {
+					prefixIndex++;
+				}
+				scale = (prefixIndex - unit) * 3;
+				prefix = prefixes[prefixIndex];
+			} else {
+				/* Prefix explicitly specified */
+				scale = (prefixIndex - unit) * 3;
 			}
-			/* Format */
-			return digitsFormatter(value / Math.pow(10, scale), digits) + prefixes[scale];
+			scaled = value / Math.pow(10, scale);
+			return digitsFormatter(scaled, '~3') + prefix;
 		};
 	}
 
