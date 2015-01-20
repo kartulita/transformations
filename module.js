@@ -3,8 +3,7 @@
 
 	/**
 	 * @ngdoc module
-	 * @module battlesnake.transformations
-	 * @requires {@link http://underscorejs.org|Underscore}
+	 * @module transformations
 	 *
 	 */
 	angular.module('battlesnake.transformations', []);
